@@ -1,15 +1,31 @@
-const LoginPage = require('../pageobjects/login.page');
-const SecurePage = require('../pageobjects/secure.page');
+const HomePage = require('../pageobjects/home.page');
+
 
 describe('My home page', () => {
-    it('clicking on search do not redirect', async () => {
-        beforeEach(() => {
-            await LoginPage.open();
-        })
-       
-        await LoginPage.typeSearch();
+
+    before(async () =>  {
+        await HomePage.open();
+    })
+
+    it('Clicking on search do not redirect to new page:a', async () => {
+            
+      await HomePage.clickSearch();
+      await HomePage.validatePageDoNotChange();
     
     });
+
+    it('Clicking on especialidad, then it focus and change placeholder:b', async () => {
+            
+        await LoginPage.verifyPlaceholderAfterClickingEspecialidad();       
+      
+      });
+
+    it('Validate search by Maria shows Maria specialist:c', async () => {
+        let name = "Maria";
+        await LoginPage.typeMariaOnSearchBar(name);
+        await this.clickSearch();
+                          
+      });
 });
 
 
