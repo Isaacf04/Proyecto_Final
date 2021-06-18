@@ -3,7 +3,7 @@ const HomePage = require('../pageobjects/home.page');
 
 describe('My home page', () => {
 
-    before(async () =>  {
+    beforeEach(async () =>  {
         await HomePage.open();
     })
 
@@ -16,15 +16,13 @@ describe('My home page', () => {
 
     it('Clicking on especialidad, then it focus and change placeholder:b', async () => {
             
-        await LoginPage.verifyPlaceholderAfterClickingEspecialidad();       
+        await HomePage.verifyPlaceholderAfterClickingEspecialidad();       
       
       });
 
-    it('Validate search by Maria shows Maria specialist:c', async () => {
+    it.only('Validate search by Maria shows Maria specialist:c', async () => {
         let name = "Maria";
-        await LoginPage.typeMariaOnSearchBar(name);
-        await this.clickSearch();
-                          
+        await HomePage.typeOnSearchBar(name);                               
       });
 });
 

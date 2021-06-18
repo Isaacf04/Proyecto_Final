@@ -7,8 +7,8 @@ class HomePage {
      * define selectors using getter methods
      */
     get searchBar () { return $('input[value="Buscar"]') }
-    get especialidadButton () { return $('#phisical') }
-    // get searchInput () { return $('#search-input') }
+    get especialidadButton () { return $('#custom-search-input > ul >li:nth-child(1)') }
+    get searchInput () { return $('#search-input') }
 
     
        
@@ -27,15 +27,15 @@ class HomePage {
     }
 
     async verifyPlaceholderAfterClickingEspecialidad () {
-        await (await this.especialidadButton).click();
-        const placeHolder = $('placeholder="Ejemplo: Nombre, Especialidad..."')
-        placeHolder.isFocused()
-        expect(placeHolder).toBeDisplayed()
-
+       
+       await (await this.especialidadButton).click();
+        const placeHolder = await $('.overlay-show')
+        await expect(placeHolder).toBeDisplayed()
     }
 
-    async typeMariaOnSearchBar (name) {
-        await this.searchBar().addValue(name);           
+    async typeOnSearchBar (name) {
+        await (await this.searchInput).setValue(name); 
+        await (await this.searchBar).click()          
 
     }
 
