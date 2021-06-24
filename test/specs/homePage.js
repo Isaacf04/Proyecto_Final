@@ -1,5 +1,5 @@
 const HomePage = require('../pageobjects/home.page');
-
+const ResultsPage = require('../pageobjects/results.Page');
 
 describe('My home page', () => {
 
@@ -22,7 +22,7 @@ describe('My home page', () => {
 
     it.only('Validate search by Maria shows Maria specialist:c', async () => {
         let name = "Maria";
-        await HomePage.typeOnSearchBar(name);                               
+        await ResultsPage.validatePageLoaded(name);                               
       });
 });
 
