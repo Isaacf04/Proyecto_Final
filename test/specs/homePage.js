@@ -1,10 +1,10 @@
 const HomePage = require('../pageobjects/home.page');
-const ResultsPage = require('../pageobjects/results.Page');
+const searchPage = require('../pageobjects/search.Page');
 
 describe('My home page', () => {
 
     beforeEach(async () =>  {
-        await HomePage.open();
+        await HomePage.open('/#');
     })
 
     it('Clicking on search do not redirect to new page:a', async () => {
@@ -20,9 +20,9 @@ describe('My home page', () => {
       
       });
 
-    it.only('Validate search by Maria shows Maria specialist:c', async () => {
+    it('Validate search by Maria shows Maria specialist:c', async () => {
         let name = "Maria";
-        await ResultsPage.validatePageLoaded(name);                               
+        await searchPage.validatePageLoaded(name);                               
       });
 });
 
