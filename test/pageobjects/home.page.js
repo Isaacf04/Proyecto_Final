@@ -2,13 +2,20 @@
 /**
  * sub page containing specific selectors and methods for a specific page
  */
+
+const homePageselectors = {
+    searchBarButton: 'input[value="Buscar"]',
+    especialidadButton: '#custom-search-input > ul >li:nth-child(1)',
+    searchInputButton: '#search-input'
+
+}
 class HomePage {
     /**
      * define selectors using getter methods
      */
-    get searchBar () { return $('input[value="Buscar"]') }
-    get especialidadButton () { return $('#custom-search-input > ul >li:nth-child(1)') }
-    get searchInput () { return $('#search-input') }
+    get searchBar () { return $(homePageselectors.searchBarButton)}
+    get especialidadButton () { return $(homePageselectors.especialidadButton) }
+    get searchInput () { return $(homePageselectors.searchInputButton) }
 
     
        
@@ -39,8 +46,8 @@ class HomePage {
 
     }
 
-    async open () {
-       return await browser.url('./#/');
+    async open (url) {
+       return await browser.url(url);
     }
 }
 
